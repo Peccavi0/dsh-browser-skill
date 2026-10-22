@@ -1,0 +1,43 @@
+{
+  "name": "dsh-browser-skill",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "DeepSeek Harness bundle that exposes the browser-skill (bsk) CLI to the model as one bounded tool.",
+  "license": "MIT",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-bundle",
+    "browser-automation",
+    "chrome",
+    "chromium",
+    "agent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peccavi0/dsh-browser-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Peccavi0/dsh-browser-skill/issues"
+  },
+  "homepage": "https://github.com/Peccavi0/dsh-browser-skill#readme",
+  "engines": {
+    "dsh": ">=0.2.1-rc.2"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

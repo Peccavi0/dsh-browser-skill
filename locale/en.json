@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Browser Skill",
+    "description": "Runs bsk browser-skill commands against your logged-in Chromium browser through one bounded model tool."
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Browser Skill">
+  <defs>
+    <linearGradient id="bsk-window" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f6fed"/>
+      <stop offset="1" stop-color="#1b3fa0"/>
+    </linearGradient>
+    <linearGradient id="bsk-cursor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d7e3ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="18" width="108" height="92" rx="14" fill="url(#bsk-window)"/>
+  <path d="M10 40h108" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3"/>
+  <circle cx="26" cy="29" r="3.5" fill="#ffffff" fill-opacity="0.9"/>
+  <circle cx="38" cy="29" r="3.5" fill="#ffffff" fill-opacity="0.65"/>
+  <circle cx="50" cy="29" r="3.5" fill="#ffffff" fill-opacity="0.45"/>
+  <rect x="24" y="52" width="44" height="6" rx="3" fill="#ffffff" fill-opacity="0.55"/>
+  <rect x="24" y="66" width="64" height="6" rx="3" fill="#ffffff" fill-opacity="0.35"/>
+  <rect x="24" y="80" width="30" height="6" rx="3" fill="#ffffff" fill-opacity="0.25"/>
+  <path d="M78 62l26 11-10.5 3.2L99 89l-7 3-5.6-12.6L78 86z" fill="url(#bsk-cursor)" stroke="#1b3fa0" stroke-width="2" stroke-linejoin="round"/>
+</svg>
