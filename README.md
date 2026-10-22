@@ -115,6 +115,45 @@ window resize | emulate | upload | download | request-help | record start | reco
 
 配置：`binaryPath`（默认 `bsk`，走 PATH）、`cwd`（默认会话工作目录）。
 
+## This is also a minimal DSH bundle reference
+
+Nine files, no build step, no dependencies, no `@deepseek-ai/*` imports. If you want to see the
+smallest thing that is still a real DSH bundle, read it top to bottom here.
+
+```
+package.json        4 exports + one dsh.bundle.patch pointer  ← the only "magic"
+cordis.patch.yml    one insert row: id + package name + config
+index.js            export name / inject / apply, and one ctx.tools.register call
+locale/*.json       UI label for the settings surface (optional)
+icon.svg            panel icon (optional)
+LICENSE, README     normal repo furniture
+```
+
+The load path is short and worth knowing:
+
+```tree
+profile package.json
+  dsh.profile.bundles[]
+    → package dsh.bundle.patch  → cordis.patch.yml
+      → insert: { id, name, config }
+        → import('<pkg>')  → apply(ctx, config)
+          → ctx.tools.register({ name, description, parameters, output, execute })
+```
+
+**Three things that are not obvious and cost time if you learn them the hard way:**
+
+1. **A workspace bundle is installed as a `link:`**, so `@deepseek-ai/*` is not resolvable from the
+   link target. The harness lives in the profile's `node_modules`, not next to your source. Write the
+   schema by hand and import Node builtins only — that is why `index.js` here has no imports beyond
+   `node:child_process`.
+2. **`inject` is a real contract, not decoration.** `export const inject = ['tools']` makes the plugin
+   wait for the tool registry; without it `ctx.tools` may be undefined at `apply` time.
+3. **The parameter schema is validated**, so it must stay inside the harness's supported JSON Schema
+   subset — no `$ref`, no conditionals. The `command` enum here is doing most of the safety work.
+
+A client half (`./client` export + `dsh.client.platform: "web"`) is only needed if you want UI:
+a panel, a sidebar entry, a custom renderer. A host-only bundle like this one needs none of it.
+
 ## Upstream, and when not to use this
 
 This is an **unofficial** adapter. It wraps the `bsk` CLI and contains no BrowserSkill code.
