@@ -115,6 +115,28 @@ window resize | emulate | upload | download | request-help | record start | reco
 
 配置：`binaryPath`（默认 `bsk`，走 PATH）、`cwd`（默认会话工作目录）。
 
+## Upstream, and when not to use this
+
+This is an **unofficial** adapter. It wraps the `bsk` CLI and contains no BrowserSkill code.
+
+- Upstream project: **[Tencent/BrowserSkill](https://github.com/Tencent/BrowserSkill)** — MIT, the CLI + extension this bundle drives.
+- **Tencent ships an official DeepSeek Harness plugin:**
+  [`@wxg-prc-cpg/browser-skill-dsh-plugin`](https://github.com/Tencent/BrowserSkill/tree/main/packages/dsh-plugin-browserskill).
+  **If you want *a* DSH plugin for browser-skill, install that one** — it is maintained upstream and
+  covers more surface (structured extraction, screenshots, policy tooling).
+
+So when would you want this repo instead? Only if you specifically want the thin version described
+above: exactly one tool, a closed command enum, no extra behaviours, nothing to keep in sync beyond
+the command list.
+
+This project is not affiliated with, endorsed by, or supported by Tencent. `bsk` and the browser
+extension are not vendored here — install them from upstream first.
+
+中文：本项目是**非官方**适配层，只把 `bsk` 命令行包成一个受约束的工具，不含 BrowserSkill 的任何代码。
+上游 [Tencent/BrowserSkill](https://github.com/Tencent/BrowserSkill) 已经提供了官方 DSH 插件
+`@wxg-prc-cpg/browser-skill-dsh-plugin`，**只是想要一个能用的 DSH 插件的话请装官方的**；
+本仓库只适合想用「单一工具、封闭命令枚举、最小面」这个极简形态的场景。
+
 ## License
 
-MIT
+MIT — for this adapter only. BrowserSkill itself is MIT and belongs to its own authors.
